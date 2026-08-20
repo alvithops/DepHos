@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YungKai - Teknologi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#231b00",
+                        "primary-fixed-dim": "#00dbe9",
+                        "tertiary-fixed": "#ffe179",
+                        "inverse-surface": "#e1e2eb",
+                        "surface-bright": "#363940",
+                        "secondary-container": "#7000ff",
+                        "on-primary": "#00363a",
+                        "outline-variant": "#3b494b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error": "#690005",
+                        "surface-container": "#1d2026",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "on-tertiary-container": "#715d00",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                        "surface-container-low": "#191c22",
+                        "on-background": "#e1e2eb",
+                        "surface-container-lowest": "#0b0e14",
+                        "surface-dim": "#10131a",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "on-secondary-container": "#ddcdff",
+                        "background": "#10131a",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#006970",
+                        "primary-container": "#00f0ff",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed-dim": "#eac324",
+                        "electric-cyan": "#00F0FF",
+                        "on-secondary-fixed": "#23005b",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#3b2f00",
+                        "deep-violet": "#1A0B2E",
+                        "inverse-on-surface": "#2e3037",
+                        "surface-variant": "#32353c",
+                        "secondary": "#d1bcff",
+                        "on-surface": "#e1e2eb",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "glass-bg": "rgba(255, 255, 255, 0.05)",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "terminal-black": "#0D0D0D",
+                        "on-secondary": "#3c0090",
+                        "surface-container-high": "#272a31",
+                        "tertiary-container": "#fed639",
+                        "success-green": "#00FF41",
+                        "on-primary-fixed": "#002022",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary": "#fff5de",
+                        "error-container": "#93000a",
+                        "surface": "#10131a",
+                        "surface-container-highest": "#32353c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-padding": "80px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "stack-gap": "32px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .animate-float-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: floatIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes floatIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        #mobile-menu:not(.hidden) {
+            animation: menuIn 0.25s ease;
+        }
+        @keyframes menuIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen relative overflow-x-hidden antialiased selection:bg-electric-cyan selection:text-background">
+<!-- Background Shader -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+<!-- STITCH_SHADER_START:ANIMATION_9 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_9" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_9');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a dynamic, flowing background with deep colors consistent with Aether Glass
+    vec3 color1 = vec3(0.06, 0.07, 0.1); // Deep surface (#10131a)
+    vec3 color2 = vec3(0.0, 0.4, 0.5);   // Electric cyan dim
+    vec3 color3 = vec3(0.1, 0.0, 0.2);   // Subtle purple
+    
+    float noise1 = sin(uv.x * 3.0 + u_time * 0.5) * cos(uv.y * 2.0 + u_time * 0.3);
+    float noise2 = sin(uv.y * 4.0 - u_time * 0.4) * cos(uv.x * 3.0 + u_time * 0.2);
+    
+    float mask = smoothstep(0.4, 0.8, noise1 + noise2 + 0.5);
+    
+    vec3 finalColor = mix(color1, color2, mask * 0.4);
+    finalColor = mix(finalColor, color3, (1.0 - mask) * 0.2);
+    
+    // Add glowing spots that react slightly to mouse position
+    vec2 mouse = u_mouse / u_resolution;
+    float glow = 1.0 - length(uv - vec2(0.5 + 0.3 * sin(u_time * 0.2), 0.5 + 0.3 * cos(u_time * 0.1)));
+    float mouseGlow = 1.0 - length(uv - mouse);
+    
+    finalColor += color2 * pow(max(0.0, glow), 4.0) * 0.5;
+    finalColor += color2 * pow(max(0.0, mouseGlow), 6.0) * 0.3;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_9 -->
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-glass-bg dark:bg-glass-bg backdrop-blur-xl border-b border-glass-border shadow-lg relative">
+<div class="font-display-lg text-3xl lg:text-display-lg font-bold text-on-surface dark:text-on-surface tracking-tighter">
+            YungKai
+        </div>
+<!-- Desktop Nav -->
+<div class="hidden lg:flex gap-8 items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Pengenalan Web</a>
+<a class="font-body-md text-body-md text-electric-cyan font-bold border-b-2 border-electric-cyan pb-1" href="index2.html">Teknologi</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="index3.html">Terminal GitHub</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="index4.html">Hosting</a>
+</div>
+<button class="hidden lg:flex items-center justify-center px-6 py-2 border border-electric-cyan text-electric-cyan rounded hover:bg-electric-cyan/10 transition-colors duration-300" onclick="window.open('https://github.com','_blank')">
+<span class="font-label-mono text-label-mono">Connect</span>
+</button>
+<!-- Mobile Menu Trigger -->
+<button id="menu-btn" class="lg:hidden text-on-surface" aria-label="Menu">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<div id="mobile-menu" class="absolute top-full left-0 right-0 lg:hidden hidden flex flex-col bg-background/95 backdrop-blur-xl border-b border-glass-border px-gutter py-4 gap-1 shadow-lg">
+<a href="index.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Pengenalan Web</a>
+<a href="index2.html" class="px-3 py-3 rounded-lg text-electric-cyan font-bold font-body-md text-body-md">Teknologi</a>
+<a href="index3.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Terminal GitHub</a>
+<a href="index4.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Hosting</a>
+<button onclick="window.open('https://github.com','_blank')" class="mt-2 px-4 py-2 border border-electric-cyan text-electric-cyan rounded-lg font-label-mono text-label-mono hover:bg-electric-cyan/10 transition-colors self-start">Connect</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-[120px] pb-section-padding px-margin-mobile md:px-gutter max-w-container-max mx-auto min-h-screen flex flex-col items-center justify-center">
+<header class="text-center mb-16 animate-float-in">
+<h1 class="font-display-lg text-display-lg md:text-[64px] font-bold text-on-surface mb-6 drop-shadow-lg">
+                The Triad of the Web
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Membangun rumah modern di dunia digital. Pahami struktur, gaya, dan interaksi yang membuat web hidup.
+            </p>
+</header>
+<!-- Bento Grid / Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+<!-- HTML Card -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-start transition-all duration-300 animate-float-in delay-100 group">
+<div class="w-12 h-12 rounded-full border border-glass-border bg-glass-bg flex items-center justify-center mb-6 group-hover:border-electric-cyan transition-colors">
+<span class="material-symbols-outlined text-electric-cyan text-2xl" data-weight="fill">code</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">HTML: Fondasi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    HyperText Markup Language. Ibarat struktur beton dan bata sebuah rumah. Ini memberikan bentuk dasar, dinding, dan ruangan untuk konten digital Anda.
+                </p>
+<div class="font-label-mono text-label-mono text-success-green bg-terminal-black/50 p-4 rounded-lg w-full border border-glass-border">
+                    &lt;div class="rumah"&gt;<br/>  &lt;h1&gt;Atap&lt;/h1&gt;<br/>&lt;/div&gt;
+                </div>
+</div>
+<!-- CSS Card -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-start transition-all duration-300 animate-float-in delay-200 group">
+<div class="w-12 h-12 rounded-full border border-glass-border bg-glass-bg flex items-center justify-center mb-6 group-hover:border-electric-cyan transition-colors">
+<span class="material-symbols-outlined text-secondary-container text-2xl" data-weight="fill">palette</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">CSS: Estetika</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Cascading Style Sheets. Ini adalah cat, dekorasi, dan desain interior. CSS membuat struktur dasar menjadi indah dan responsif di berbagai ukuran layar.
+                </p>
+<div class="font-label-mono text-label-mono text-secondary-fixed-dim bg-terminal-black/50 p-4 rounded-lg w-full border border-glass-border">
+                    .rumah {<br/>  warna: putih;<br/>  gaya: modern;<br/>}
+                </div>
+</div>
+<!-- JavaScript Card -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-start transition-all duration-300 animate-float-in delay-300 group">
+<div class="w-12 h-12 rounded-full border border-glass-border bg-glass-bg flex items-center justify-center mb-6 group-hover:border-electric-cyan transition-colors">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl" data-weight="fill">bolt</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">JS: Interaksi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    JavaScript. Ini adalah sistem kelistrikan dan pipa air. Memberikan fungsi nyata—menghidupkan lampu, membuka pintu, dan merespons tindakan pengguna.
+                </p>
+<div class="font-label-mono text-label-mono text-tertiary-fixed bg-terminal-black/50 p-4 rounded-lg w-full border border-glass-border">
+                    saklar.on("klik", () =&gt; {<br/>  lampu.nyala();<br/>});
+                </div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-glass-border backdrop-blur-md relative z-10 mt-auto">
+<div class="font-headline-md text-headline-md text-on-surface">
+            YungKai
+        </div>
+<div class="flex gap-6 items-center">
+<a href="https://wa.me/6289603294473" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+<a href="https://www.instagram.com/alvithopsipayung?igsh=c3R5bW5wZXg4ZW94" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="Instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+</a>
+<a href="https://github.com/alvithops" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="GitHub">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant">
+            © 2024 YungKai - Towards a Golden Generation
+        </div>
+</footer>
+<script>
+(function() {
+  var btn = document.getElementById('menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  var icon = btn.querySelector('.material-symbols-outlined');
+  btn.addEventListener('click', function() {
+    var hidden = menu.classList.toggle('hidden');
+    if (icon) icon.textContent = hidden ? 'menu' : 'close';
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menu.classList.add('hidden');
+      if (icon) icon.textContent = 'menu';
+    });
+  });
+})();
+</script>
+</body></html>

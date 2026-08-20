@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pengenalan Web - Aether Glass</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#b9cacb",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#006970",
+                        "on-primary-fixed": "#002022",
+                        "surface-variant": "#32353c",
+                        "tertiary-fixed-dim": "#eac324",
+                        "surface-container-low": "#191c22",
+                        "on-tertiary-container": "#715d00",
+                        "secondary-container": "#7000ff",
+                        "inverse-on-surface": "#2e3037",
+                        "primary-container": "#00f0ff",
+                        "electric-cyan": "#00F0FF",
+                        "inverse-surface": "#e1e2eb",
+                        "tertiary-container": "#fed639",
+                        "secondary": "#d1bcff",
+                        "surface-container-highest": "#32353c",
+                        "deep-violet": "#1A0B2E",
+                        "on-surface": "#e1e2eb",
+                        "on-primary": "#00363a",
+                        "glass-bg": "rgba(255, 255, 255, 0.05)",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#ddcdff",
+                        "on-secondary-fixed": "#23005b",
+                        "surface-container": "#1d2026",
+                        "surface-container-lowest": "#0b0e14",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed": "#231b00",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "tertiary-fixed": "#ffe179",
+                        "primary-fixed-dim": "#00dbe9",
+                        "outline-variant": "#3b494b",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "surface-container-high": "#272a31",
+                        "secondary-fixed": "#e9ddff",
+                        "surface": "#10131a",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-dim": "#10131a",
+                        "on-tertiary": "#3b2f00",
+                        "on-background": "#e1e2eb",
+                        "on-primary-container": "#006970",
+                        "terminal-black": "#0D0D0D",
+                        "success-green": "#00FF41",
+                        "primary-fixed": "#7df4ff",
+                        "surface-bright": "#363940",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "tertiary": "#fff5de",
+                        "on-secondary": "#3c0090",
+                        "background": "#10131a",
+                        "surface-tint": "#00dbe9",
+                        "error": "#ffb4ab",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                        "on-primary-fixed-variant": "#004f54"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-gap": "32px",
+                        "container-max": "1200px",
+                        "section-padding": "80px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #10131a;
+            color: #e1e2eb;
+            overflow-x: hidden;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+        #mobile-menu:not(.hidden) {
+            animation: menuIn 0.25s ease;
+        }
+        @keyframes menuIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative font-body-md text-on-surface">
+<!-- Background Shader -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+<canvas class="absolute inset-0 w-full h-full" id="shader-canvas" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas');
+
+  function syncSize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  window.addEventListener('resize', syncSize);
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a dynamic, flowing background with deep colors consistent with Aether Glass
+    vec3 color1 = vec3(0.06, 0.07, 0.1); // Deep surface (#10131a)
+    vec3 color2 = vec3(0.0, 0.4, 0.5);   // Electric cyan dim
+    vec3 color3 = vec3(0.1, 0.0, 0.2);   // Subtle purple
+    
+    float noise1 = sin(uv.x * 3.0 + u_time * 0.5) * cos(uv.y * 2.0 + u_time * 0.3);
+    float noise2 = sin(uv.y * 4.0 - u_time * 0.4) * cos(uv.x * 3.0 + u_time * 0.2);
+    
+    float mask = smoothstep(0.4, 0.8, noise1 + noise2 + 0.5);
+    
+    vec3 finalColor = mix(color1, color2, mask * 0.4);
+    finalColor = mix(finalColor, color3, (1.0 - mask) * 0.2);
+    
+    // Add glowing spots that react slightly to mouse position
+    vec2 mouse = u_mouse / u_resolution;
+    float glow = 1.0 - length(uv - vec2(0.5 + 0.3 * sin(u_time * 0.2), 0.5 + 0.3 * cos(u_time * 0.1)));
+    float mouseGlow = 1.0 - length(uv - mouse);
+    
+    finalColor += color2 * pow(max(0.0, glow), 4.0) * 0.5;
+    finalColor += color2 * pow(max(0.0, mouseGlow), 6.0) * 0.3;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    mouse.x = event.clientX;
+    mouse.y = canvas.height - event.clientY;
+  });
+
+  function render(t) {
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-glass-bg dark:bg-glass-bg backdrop-blur-xl border-b border-glass-border shadow-lg docked full-width top-0 relative">
+<div class="font-display-lg text-3xl lg:text-display-lg font-bold text-on-surface dark:text-on-surface">
+            YungKai
+        </div>
+<div class="hidden lg:flex gap-6 items-center">
+<a class="text-electric-cyan font-bold border-b-2 border-electric-cyan pb-1 text-electric-cyan font-body-md text-body-md active:scale-95 transition-transform duration-200" href="index.html">Pengenalan Web</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-glass-bg hover:backdrop-blur-2xl transition-all duration-300 rounded px-3 py-1" href="index2.html">Teknologi</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-glass-bg hover:backdrop-blur-2xl transition-all duration-300 rounded px-3 py-1" href="index3.html">Terminal GitHub</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-glass-bg hover:backdrop-blur-2xl transition-all duration-300 rounded px-3 py-1" href="index4.html">Hosting</a>
+</div>
+<button id="menu-btn" class="lg:hidden text-on-surface" aria-label="Menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="hidden lg:flex border border-electric-cyan text-electric-cyan px-4 py-2 rounded-lg font-label-mono text-label-mono hover:bg-electric-cyan/10 transition-colors" onclick="window.open('https://github.com','_blank')">
+            Connect
+        </button>
+<div id="mobile-menu" class="absolute top-full left-0 right-0 lg:hidden hidden flex flex-col bg-background/95 backdrop-blur-xl border-b border-glass-border px-gutter py-4 gap-1 shadow-lg">
+<a href="index.html" class="px-3 py-3 rounded-lg text-electric-cyan font-bold font-body-md text-body-md">Pengenalan Web</a>
+<a href="index2.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Teknologi</a>
+<a href="index3.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Terminal GitHub</a>
+<a href="index4.html" class="px-3 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-glass-bg font-body-md text-body-md">Hosting</a>
+<button onclick="window.open('https://github.com','_blank')" class="mt-2 px-4 py-2 border border-electric-cyan text-electric-cyan rounded-lg font-label-mono text-label-mono hover:bg-electric-cyan/10 transition-colors self-start">Connect</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-section-padding px-margin-mobile md:px-gutter max-w-container-max mx-auto relative z-10">
+<!-- Hero Section -->
+<section class="text-center py-section-padding flex flex-col items-center justify-center min-h-[512px]">
+<div class="glass-panel rounded-2xl p-8 md:p-12 max-w-3xl mx-auto mb-16 relative overflow-hidden">
+<div class="absolute -inset-1 bg-gradient-to-r from-electric-cyan to-secondary-container opacity-20 blur-xl z-0"></div>
+<div class="relative z-10">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 tracking-tight text-on-surface">
+                        Gerbang Dunia Digital
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                        Mari kita telusuri bagaimana web bekerja dan mengapa ia menjadi fondasi peradaban modern saat ini.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Section 1: Apa itu Web? -->
+<section class="mb-stack-gap">
+<div class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/20 blur-3xl rounded-full"></div>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md mb-4 text-primary-container flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">public</span>
+                            Apa itu World Wide Web?
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-6">
+                            Bayangkan web sebagai sebuah perpustakaan digital raksasa yang saling terhubung di seluruh dunia. Di perpustakaan ini, setiap orang dapat berbagi, mencari, dan membaca informasi dalam berbagai bentuk—teks, gambar, video—kapan saja dan dari mana saja, selama terhubung dengan internet.
+                        </p>
+</div>
+<div class="flex-1 w-full relative">
+<img alt="Web Analogy Illustration" class="w-full h-64 object-cover rounded-xl border border-glass-border opacity-80" data-alt="A glowing abstract representation of the world wide web resembling a massive, interconnected digital library suspended in space. High-tech glassmorphism style, dark mode with neon cyan and violet accents, deep ethereal background with data streams connecting floating glass books and nodes. Clean, modern, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs7_cDXZqOsSYiAHKRS3iMFNSuJ4e-fA2R6GDihLmt3LemdsrS6AVev70q72WpEATeUzcQIKVXgEoupz5dv78qx8HrKx68U_Jaa_3JQCS3Ph6zmxViGxX0nUFIBqyVCDscWAhf9pSeRFrMxVN3TQWFT5KYoIJUotpet4rFXllkYvkokbph0-Ip8cJ0DbONwfDu8eA0Pq-riJs7Tzu9pz_ys1zSRr8cxhbhPkMlRMxMxN0iaQWWbeEPPQ"/>
+<div class="absolute inset-0 rounded-xl bg-gradient-to-t from-background/50 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Cara Kerja Web -->
+<section class="py-section-padding">
+<h2 class="text-center font-headline-md text-headline-md mb-12 text-on-surface flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-electric-cyan">settings_ethernet</span>
+                Cara Kerja Web
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card A -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-start relative group">
+<div class="w-12 h-12 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 flex items-center justify-center mb-6 text-electric-cyan group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">touch_app</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface text-xl">1. Permintaan (Request)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Mirip seperti memesan makanan di restoran. Peramban (browser) kamu meminta sebuah halaman atau data ke suatu alamat spesifik.
+                    </p>
+</div>
+<!-- Card B -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-start relative group mt-0 md:mt-8">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 border border-tertiary-container/30 flex items-center justify-center mb-6 text-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface text-xl">2. Server (Dapur)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Ini adalah tempat di mana data dan kode situs web disimpan, diproses, dan "dimasak". Server merespon permintaan yang datang.
+                    </p>
+</div>
+<!-- Card C -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-start relative group mt-0 md:mt-16">
+<div class="w-12 h-12 rounded-full bg-success-green/10 border border-success-green/30 flex items-center justify-center mb-6 text-success-green group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">desktop_windows</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface text-xl">3. Respon (Tersaji)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Situs web dikirimkan kembali ke layar perangkatmu dalam bentuk yang utuh dan siap untuk dinikmati atau diinteraksikan.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-glass-border backdrop-blur-md full-width flat no shadows relative z-50">
+<div class="font-headline-md text-headline-md text-on-surface font-headline-md text-headline-md text-on-surface">
+            YungKai
+        </div>
+<div class="flex gap-6 items-center">
+<a href="https://wa.me/6289603294473" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+<a href="https://www.instagram.com/alvithopsipayung?igsh=c3R5bW5wZXg4ZW94" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="Instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+</a>
+<a href="https://github.com/alvithops" target="_blank" rel="noopener" class="text-on-surface-variant hover:text-electric-cyan transition-colors" aria-label="GitHub">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant">
+            © 2024 YungKai - Towards a Golden Generation
+        </div>
+</footer>
+<script>
+(function() {
+  var btn = document.getElementById('menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  var icon = btn.querySelector('.material-symbols-outlined');
+  btn.addEventListener('click', function() {
+    var hidden = menu.classList.toggle('hidden');
+    if (icon) icon.textContent = hidden ? 'menu' : 'close';
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menu.classList.add('hidden');
+      if (icon) icon.textContent = 'menu';
+    });
+  });
+})();
+</script>
+</body></html>
